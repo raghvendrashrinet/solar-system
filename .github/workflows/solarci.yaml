@@ -18,4 +18,4 @@ jobs:
         - name: install dependancy
           run: npm install
         - name: unit testing
-          run: nmp test
+          run: npm test
