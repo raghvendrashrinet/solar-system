@@ -1,1 +1,21 @@
+name: ci
+on:
+    push:
+        branches:
+        - main 
+        - feature/*
+jobs:
+    npm_setup:
+        runs-on: 'ubuntu-latest'
+        steps:
+        -  name: checkout
+           uses:  actions/checkout@v4
+        -  name: Use Node.js
+           uses: actions/setup-node@v4
+           with:
+             node-version: 18
 
+        - name: install dependancy
+          run: npm install
+        - name: unit testing
+          run: nmp test
