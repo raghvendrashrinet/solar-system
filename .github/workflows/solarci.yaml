@@ -37,6 +37,6 @@ jobs:
         - name: upload  unit test report
           uses: actions/upload-artifact@v4
           with: 
-            name: unitTestReport-${{matrix.operating_system}}
-            path: test-results-${{matrix.operating_system}}.xml
+            name: unitTestReport-${{matrix.operating_system}}-${{matrix.nodejs_version}}
+            path: test-results-${{matrix.operating_system}}-${{matrix.nodejs_version}}.xml
           
