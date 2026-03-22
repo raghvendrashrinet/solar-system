@@ -35,5 +35,5 @@ jobs:
           uses: actions/upload-artifact@v4
           with: 
             name: unitTestReport--${{github.ref}}
-            path: test-results-${{github.ref}}.xml
+            path: test-results.xml
           
