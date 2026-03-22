@@ -26,7 +26,7 @@ jobs:
           run: npm test
 
         - name: upload  unit test report
-          uses: actions/up;oad-artifacts@v3
+          uses: actions/upload-artifacts@v3
           with: 
             name: unitTest Result
             path: test-results.xml
