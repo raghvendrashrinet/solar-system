@@ -32,11 +32,11 @@ jobs:
           run: npm test
 
         - name: change report name
-          run: mv test-results.xml test-results-${{github.run_id}}.xml
+          run: mv test-results.xml test-results-${{github.sha}}.xml
 
         - name: upload  unit test report
           uses: actions/upload-artifact@v4
           with: 
-            name: unitTestReport-${{github.run_id}}
-            path: test-results-${{github.run_id}}.xml
+            name: unitTestReport-${{github.sha}}
+            path: test-results-${{github.sha}}.xml
           
