@@ -11,7 +11,7 @@ env:
 
 
 jobs:
-    npm_setup:
+    run_test:
         runs-on: ${{ matrix.operating_system }}
         strategy:
             matrix:
@@ -39,4 +39,24 @@ jobs:
           with: 
             name: unitTestReport-${{matrix.operating_system}}-${{matrix.nodejs_version}}
             path: test-results-${{matrix.operating_system}}-${{matrix.nodejs_version}}.xml
-          
+
+    run_code_coverage:
+        runs-on: 'ubuntu-latest'
+        steps:
+        -  name: checkout
+           uses:  actions/checkout@v4
+        -  name: Use Node.js
+           uses: actions/setup-node@v4
+           with:
+             node-version: 18
+
+        - name: install dependancy
+          run: npm install
+        - name: unit testing
+          run: npm run coverage
+
+        - name: upload code coverage report
+          uses: actions/upload-artifact@v4
+          with: 
+            name: code-coverage-${{github.sha}}
+            path: coverage         
