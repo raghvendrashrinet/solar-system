@@ -67,6 +67,8 @@ jobs:
             retention-days: 1
 
     docker:
+        runs-on: 'ubuntu-latest'
+        steps:
         - name: Docker Login
           uses: docker/login-action@v3
           with:
