@@ -122,8 +122,8 @@ jobs:
         # kubectl install on the runner
         - name: kubectl install on the runner
           uses: azure/setup-kubectl@v4
-          with:
-            version: '<version>' # default is latest stable
+          #with:
+           # version: '<version>' # default is latest stable
           id: install    
         - name: setting kubeconfig 
           run: |
