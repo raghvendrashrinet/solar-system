@@ -114,7 +114,24 @@ jobs:
                  ${{vars.DOCKER_USERNAME}}/solar-system:${{github.sha}}
                  ghcr.io/${{vars.DOCKER_USERNAME}}/solar-system:${{github.sha}}
               
-
+    Kubernetese_CD:
+      runs-on: 'ubuntu-latest'
+     
+      steps: 
+        # kubectl install on the runner
+        - name: kubectl install on the runner
+          uses: azure/setup-kubectl@v4
+          with:
+            version: '<version>' # default is latest stable
+          id: install    
+        - name: setting kubeconfig 
+          run: |
+            curl -sfL https://get.k3s.io | sh -
+            mkdir -p ~/.kube
+            sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+            sudo chown $USER:$USER ~/.kube/config 
+            echo ~/.kube/config
+            kubectl get pods
 
         
         
