@@ -125,6 +125,8 @@ jobs:
           #with:
            # version: '<version>' # default is latest stable
           id: install    
+        -  name: checkout
+           uses:  actions/checkout@v4
         - name: setting kubeconfig 
           run: |
             curl -sfL https://get.k3s.io | sh -
