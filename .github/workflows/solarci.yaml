@@ -139,7 +139,9 @@ jobs:
         
         - name: saving nginx controller ip as github environment variable    
           run: |
-            echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip}")" >> $GITHUB_ENV
+            IP=$(kubectl -n ingress-nginx get svc ingress-nginx-controller -o jsonpath='{.status.loadBalancer.ingress[0].ip}' 2>/dev/null || echo "127.0.0.1")
+            echo "INGRESS_IP=$IP" >> $GITHUB_ENV
+
         - name: Replace place holder in k8s manifest files    
           uses: cschleiden/replace-tokens@v1
           with:
